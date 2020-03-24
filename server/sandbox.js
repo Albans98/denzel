@@ -16,7 +16,7 @@ async function start (actor = DENZEL_IMDB_ID, metascore = METASCORE) {
 
     // await for the data before going on
     const movies = await imdb(actor); // use imdb exported function to find movies from specified actor
-    const awesome = movies.filter(movie => movie.metascore >= metascore); // Filter all values of the movies array with metascore > 70
+    const awesome = movies.filter(movie => movie.metascore >= metascore); // Filter all values of the movies array with metascore >= 70
 
     console.log(`🍿 ${movies.length} movies found.`);
 

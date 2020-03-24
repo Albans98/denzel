@@ -1,6 +1,7 @@
-const mongo = require('mongoose')
+const mongo = require('mongoose');
 
-const schema = mongo.Schema({
+const schema = new mongo.Schema({
+	actor: String,
 	link: String,
 	id: String,
 	metascore: {
@@ -13,6 +14,14 @@ const schema = mongo.Schema({
 	title: String,
 	votes: Number,
 	year: Number,
+	watch_date: { 
+		type: String, 
+		default: 'unwatched' 
+	},
+	review: { 
+		type: String, 
+		default: 'no review yet' 
+	}
 });
 
-module.exports = mongo.model('denzel_db', schema);
+module.exports = mongo.model('movie_item', schema);

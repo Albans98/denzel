@@ -9,7 +9,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.3",
-    "mongoose": "^5.9.5",
+    "mongoose": "^5.9.6",
     "node-emoji": "^1.10.0",
     "p-limit": "^2.2.2",
     "p-settle": "^4.0.0"
