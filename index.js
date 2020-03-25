@@ -27,7 +27,7 @@ app.use(helmet());
 app.options('*', cors()); // the * allows access from any origin
 
 
-const getRoute = require('./routes/requests');
+const getRoute = require('./server/routes/requests');
 app.use('/movies', getRoute);
 
 app.get('/', (request, response) => {
