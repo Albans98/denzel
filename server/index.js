@@ -3,7 +3,7 @@ const express = require('express'); // Express is a web application framework
 const helmet = require('helmet'); // Helmet.js secure HTTP headers returned by apps.
 require('dotenv').config(); // Access .env variables
 const mongo = require('mongoose');
-const {PORT} = require('./constants');
+const PORT = process.env.PORT || 9292;
 
 
 // Connect to MongoDB Atlas
