@@ -4,6 +4,17 @@ const movie_item = require('../db_model/mongo');
 const imdb = require('../imdb');
 
 
+// Fetch a random must-watch movie
+router.get('/', async (req, res) => {
+	try {
+		const random_movie = await movie_item.aggregate([{$match: { metascore: { $gt: 70 } } }, { $sample: { size: 1 }}]);
+		res.json(random_movie);
+	}
+	catch(err) {
+		res.json({message: err});
+	}
+});
+
 // Populate the database
 router.get('/populate/:id', async (req, res) => {
 	let movies = await imdb(req.params.id);
@@ -35,17 +46,6 @@ router.get('/populate/:id', async (req, res) => {
   			res.send({'total': count});
   		}
 	});
-});
-
-// Fetch a random must-watch movie
-router.get('/', async (req, res) => {
-	try {
-		const random_movie = await movie_item.aggregate([{$match: { metascore: { $gt: 70 } } }, { $sample: { size: 1 }}]);
-		res.json(random_movie);
-	}
-	catch(err) {
-		res.json({message: err});
-	}
 });
 
 // Search for Denzel's movies

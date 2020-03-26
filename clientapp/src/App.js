@@ -2,12 +2,23 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import axios from "axios";
 import Movie from './components/Movie';
+import Background from './background/road.jpg';
+
+
+var bgStyle = {
+  minHeight: "100%",
+  minWidth: "1024px",
+  width: "100%",
+  height: "auto",
+  position: "fixed",
+  backgroundPosition: "center",
+  backgroundImage: `url(${Background})`
+};
+
 
 const App = () => {
   const exampleReq = 'https://denzel-movies.herokuapp.com/movies';
   
-  const [counter, setCounter] = useState(0);
-
   const[movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,21 +29,20 @@ const App = () => {
   	console.log(data.id);
     }
     getData();
-  }, [counter]);
+  }, []);
 
 
 
 
 
   return (
-    <div className="App">
+    <div style={bgStyle} className="App">
+    <p className="intro"> The must-watch movies of Denzel Washington </p>
       <form className="search-form">
-        <input className="search-bar" type="text"/>
-        <button className="search-button" type="submit"> Search </button>
+        <button className="search-button" type="submit"> Search another movie </button>
       </form>
-      <h1 onClick={() => setCounter(counter+1)}> {counter} </h1>
       {movies.map(movie => (
-      	<Movie title={movie.title} image={movie.poster}/>
+      	<Movie title={movie.title} image={movie.poster} synopsis={movie.synopsis}/>
       ))}
     </div>
   );

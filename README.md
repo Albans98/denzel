@@ -1,5 +1,10 @@
 # DENZEL
 
+Workshop finished ! Here are my results :
+> API created : [API backed with MongoDB Atlas](https://denzel-movies.herokuapp.com/movies)
+> Minimalist frontend : [React frontend](https://denzel-react.herokuapp.com/)
+
+
 > The must-watch Denzel's movies
 
 ![denzel](https://m.media-amazon.com/images/M/MV5BMjE5NDU2Mzc3MV5BMl5BanBnXkFtZTcwNjAwNTE5OQ@@._V1_SY1000_SX750_AL_.jpg)
