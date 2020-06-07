@@ -12,10 +12,8 @@ Workshop finished ! Here are my results :
 
 - [🐣 Introduction](#-introduction)
 - [🎯 Objectives](#-objectives)
-- [👩‍💻 Just tell me what to do](#%E2%80%8D-just-tell-me-what-to-do)
 - [Definition and Configuration](#definition-and-configuration)
   - [Definition](#definition)
-  - [Suggested node modules](#suggested-node-modules)
   - [Bootstrap the server](#bootstrap-the-server)
 - [🏃‍♀️ Steps to do](#%E2%80%8D-steps-to-do)
   - [REST endpoints to implement](#rest-endpoints-to-implement)
@@ -24,11 +22,7 @@ Workshop finished ! Here are my results :
     - [`GET /movies/:id`](#get-moviesid)
     - [`GET /movies/search`](#get-moviessearch)
     - [POST /movies/:id](#post-moviesid)
-  - [GraphQL endpoints to implement](#graphql-endpoints-to-implement)
-    - [(A suggested) Schema](#a-suggested-schema)
-  - [Bonus - The Client side](#bonus---the-client-side)
-- [🛣️ Related course](#-related-course)
-- [Licence](#licence)
+  - [Bonus - The Client side](#-the-client-side)
 
 
 ## 🐣 Introduction
