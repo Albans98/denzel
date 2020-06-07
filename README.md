@@ -1,16 +1,13 @@
 # DENZEL
 
 Workshop finished ! Here are my results :
-> API created : [API backed with MongoDB Atlas](https://denzel-movies.herokuapp.com/movies)
+> API created : [API backed with MongoDB Atlas](https://denzel-movies.herokuapp.com/movies)  
 > Minimalist frontend : [React frontend](https://denzel-react.herokuapp.com/)
 
 
 > The must-watch Denzel's movies
 
 ![denzel](https://m.media-amazon.com/images/M/MV5BMjE5NDU2Mzc3MV5BMl5BanBnXkFtZTcwNjAwNTE5OQ@@._V1_SY1000_SX750_AL_.jpg)
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
 - [🐣 Introduction](#-introduction)
@@ -33,53 +30,16 @@ Workshop finished ! Here are my results :
 - [🛣️ Related course](#-related-course)
 - [Licence](#licence)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 🐣 Introduction
 
-Denzel Washington is one of my favorite actor.
+Denzel Washington is a famous actor.
 
 He won 2 Oscars. [Another 83 wins & 169 nominations](https://www.imdb.com/name/nm0000243/awards?ref_=nm_awd)
 
 ## 🎯 Objectives
 
-**Build a REST and GRAPHQL API to get the must-watch Denzel's movies**.
-
-## 👩‍💻 Just tell me what to do
-
-1. Fork the project via `github`
-
-![fork](./img/fork.png)
-
-1. Clone your forked repository project `https://github.com/YOUR_USERNAME/denzel`
-
-```sh
-❯ cd /path/to/workspace
-❯ git clone git@github.com:YOUR_USERNAME/denzel.git
-```
-
-2. **[Do things](https://github.com/92bondstreet/denzel#%EF%B8%8F-steps-to-do)**
-
-3. Commit your different modifications:
-
-```sh
-❯ cd /path/to/workspace/denzel
-❯ git add -A && git commit -m "feat(movies): get a random movie"
-❯ git push origin master
-```
-
-([why following a commit message convention?](https://www.conventionalcommits.org))
-
-4. Don't forget to commit early, commit often and push often
-
-```sh
-❯ git push origin master
-```
-
-**Note**:
-
-- If you catch an error about authentication, [add your ssh to your github profile](https://help.github.com/articles/connecting-to-github-with-ssh/).
-- If you need some helps on git commands, read [git - the simple guide](http://rogerdudler.github.io/git-guide/)
+**Build a REST API to get the must-watch Denzel's movies**.
 
 ## Definition and Configuration
 
@@ -87,32 +47,21 @@ He won 2 Oscars. [Another 83 wins & 169 nominations](https://www.imdb.com/name/n
 
 - A **must-watch** movie is a movie with a `metascore` higher than `70`.
 - API should listen locally the port `9292`.
-- Data should be stored in MongoDB. Backed either with a DaaS: [mLab](https://mlab.com), [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) etc... Either with a [container Docker](https://hub.docker.com/r/mvertes/alpine-mongo).
+- Data is stored in MongoDB. Backed with a DaaS: [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)  
 - To test and check your API, you should use a client like [Insomnia](https://insomnia.rest) or [Postman](https://www.getpostman.com/products)
-- Deploy the API with a serverless cloud service: [Netlify](https://www.netlify.com), [Now](https://zeit.co/now) etc...
-
-### Suggested node modules
-
-- [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
-- [cheerio](https://www.npmjs.com/package/cheerio) - Fast, flexible & lean implementation of core jQuery designed specifically for the server
-- [dotenv](https://www.npmjs.com/package/dotenv) - Loads environment variables from .env for nodejs projects
-- [express](https://www.npmjs.com/package/express) - Fast, unopinionated, minimalist web framework for node
-- [graphql](https://www.npmjs.com/package/graphql) - A reference implementation of GraphQL for JavaScript
-- [graphql-tools](https://www.npmjs.com/package/graphql-tools) - Build, mock, and stitch a GraphQL schema using the schema language
-- [mongodb](https://www.npmjs.com/package/mongodb) - Mongo DB Native NodeJS Driver
-- [nodemon](https://www.npmjs.com/package/nodemon) - Monitor for any changes in your node.js application and automatically restart the server - perfect for development
+- Deployed API with a serverless cloud service: [Netlify](https://www.netlify.com)
 
 ### Bootstrap the [server](./server/index.js)
 
 ```sh
 ❯ cd server
-❯ npm i # or yarn
+❯ npm i
 ❯ node_modules/.bin/nodemon index.js
 ```
 
 ## 🏃‍♀️ Steps to do
 
-### REST endpoints to implement
+### REST endpoints
 
 #### `GET /movies/populate/:id`
 
@@ -212,7 +161,7 @@ This endpoint accepts the following optional query string parameters:
 - `limit` - number of movies to return (default: 5)
 - `metascore` - filter by metascore (default: 0)
 
-The results array should be sorted by metascore in descending way.
+The results array is sorted by metascore in descending way.
 
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/search?limit=5&metascore=77
@@ -272,55 +221,9 @@ This endpoint accepts the following post parameters:
 }
 ```
 
-### GraphQL endpoints to implement
+### The Client side
 
-Same definitions as REST API with `/graphql` endpoint.
-
-- Populate the database
-- Fetch a random **must-watch** movie
-- Fetch a specific movie
-- Search for Denzel's movies
-- Save a watched date and a review.
-
-#### (A suggested) Schema
-
-```
-schema {
-  query Query
-}
-
-type Query {
-  movies: [Movie]
-  movie: Movie
-}
-
-type Movie {
-  link: String
-  metascore: Int
-  synopsis: String
-  title: String
-  year: Int
-}
-```
-
-```sh
-❯ curl -d '{"query": "movie {link metascore synopsis title year}"}' -H "Content-Type: application/json" http://localhost:9292/graphql
-{
-  "data": {
-    "movie": {
-      "link": "https://www.imdb.com/title/tt0174856/?ref_=nm_flmg_act_23",
-      "metascore": 74,
-      "synopsis": "The story of Rubin \"Hurricane\" Carter, a boxer wrongly imprisoned for murder, and the people who aided in his fight to prove his innocence.",
-      "title": "Hurricane Carter (1999)",
-      "year": 1999
-    }
-  }
-}
-```
-
-### Bonus - The Client side
-
-Build a client side web application.
+React client side, web application.
 
 The MVP definiton could be:
 
@@ -332,12 +235,3 @@ Each time, we open the web application or refresh the page, fetch a random **mus
 - display the metascore
 - display the review
 - allow to open the IMDb record
-
-## 🛣️ Related course
-
-- [Course 7 - API-ness](https://github.com/92bondstreet/javascript-empire#-course-7---api-ness)
-- [Course 8 - Make the Web accessible](https://github.com/92bondstreet/javascript-empire#-course-8---make-the-web-accessible)
-
-## Licence
-
-[Uncopyrighted](http://zenhabits.net/uncopyright/)
